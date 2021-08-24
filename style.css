@@ -1,0 +1,85 @@
+:root {
+    --dark-blue: #363f5f
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f0f2f5;
+
+    font-family: 'Poppins', sans-serif;
+}
+
+.container {
+    width: min(90vh, 800px);
+
+    margin: auto;
+}
+
+h2 {
+    margin-top: 3.2rem;
+    margin-bottom: 0.8rem;
+
+    font-weight: 700;
+    color: var(--dark-blue)
+}
+
+header {
+    background: #11698E;
+
+    padding: 4rem 2rem 15rem 2rem;
+
+    text-align: center;
+}
+
+#logo {
+    color: #fff;
+    font-weight: 100;
+    letter-spacing: 1em;
+    font-size: 2.5em;
+}
+
+#balance {
+    margin-top: -7.1rem;
+}
+
+#balance h2 {
+    color: #fff;
+
+    margin-top: 0;
+}
+
+.card {
+    background: #fff;
+
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+
+    border-radius: 0.25rem;
+}
+
+.card h3 {
+    font-weight: normal;
+    font-size: 1rem;
+}
+
+.card p {
+    font-size: 2rem;
+    line-height: 3rem;
+
+    margin-top: 1rem;
+}
+
+.card.total {
+    background: #16C79A;
+}
+
+
+
+footer {
+    text-align: center;
+}
