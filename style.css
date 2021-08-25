@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 93.75%;
+}
+
 body {
     background: #f0f2f5;
 
@@ -32,6 +36,8 @@ body {
     margin: auto;
 }
 
+
+/*Titles ============== */
 h2 {
     margin-top: 3.2rem;
     margin-bottom: 0.8rem;
@@ -40,10 +46,27 @@ h2 {
     color: var(--dark-blue)
 }
 
+/*Links and btns ============== */
+
+a {
+    color: #49AA26;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #3dd705;
+}
+
+.btn.new {
+    display: inline-block;
+    margin-bottom: .8rem;
+}
+/*Header ============== */
+
 header {
     background: #11698E;
 
-    padding: 4rem 2rem 15rem 2rem;
+    padding: 4rem 2rem 15rem 5rem;
 
     text-align: center;
 }
@@ -95,18 +118,26 @@ header {
 }
 
 #data-table {
+    display: block;
+
     width: 100%;
 
     color: #969CB3;
 
-    border-spacing: 0 0.5rem
+    border-spacing: 0 0.5rem;
+
+    overflow: hidden;
 }
 
 table thead tr:first-child,
 table tbody tr td:first-child {
-    border-radius: 0.25rem;
+    border-radius: 0.25rem 0 0 0.25rem;
 }
 
+table thead tr:last-child,
+table tbody tr td:last-child {
+    border-radius: 0 0.25rem 0.25rem 0;
+}
 
 table thead th {
     background: #fff;
@@ -153,6 +184,20 @@ footer {
     color: var(--dark-blue);
 
     opacity: 0.6;
+}
+
+/*Responsive ============== */
+@media (min-width: 800px) {
+
+    html {
+        font-size: 87.5%;
+    }
+
+    #balance {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
 }
 
 
