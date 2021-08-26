@@ -173,6 +173,17 @@ td.expense {
     color: #e92929;
 }
 
+/*Modal ============== */
+
+.modal-overlay {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.7 );
+
+    position: fixed;
+}
+
 footer {
     text-align: center;
 
