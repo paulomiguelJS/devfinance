@@ -81,13 +81,34 @@
             </table>
         </section>
     </main>
-    <div class="modal-overlay">
+    <div class="modal-overlay active">
         <div class="modal">
-            <div class="modal-content">
-                Test
+            <div class="form">
+                <h2>New Transaction</h2>
+                <form action="">
+                    <div class="input-group">
+                        <label class="sr-only" for="description">Description</label>
+                        <input type="text" id="description" name="description" placeholder="Description">
+                    </div>
+                    <div class="input-group">
+                        <label class="sr-only" for="amout">Amount</label>
+                        <input type="number" id="amount" name="amount" placeholder="0.00">
+                        <small class="help">Use the - (NEGATIVE) sign for expenses and , (POINT) to decimal places.(</small>
+                    </div>
+                   
+                    <div class="input-group">
+                        <label class="sr-only" for="date">date</label>
+                        <input type="date" id="date" name="date" >
+                    </div>
+
+                    <div class="input-group actions">
+                        <a href="#" class="btn cancell">Close</a>
+                        <button>Save</button>
+                    </div>
+
+                </form>
             </div>
         </div>
-
     </div>
     <footer>
         <p>Dev Finance</p>
