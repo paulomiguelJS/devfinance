@@ -46,7 +46,7 @@ h2 {
     color: var(--dark-blue)
 }
 
-/*Links and btns ============== */
+/*Links and Buttons ============== */
 
 a {
     color: #49AA26;
@@ -60,6 +60,53 @@ a:hover {
 .btn.new {
     display: inline-block;
     margin-bottom: .8rem;
+}
+
+button {
+    width: 100%;
+    height: 50px;
+
+    background:#49AA26;
+    color: #fff;
+
+    padding: 0;
+    
+    border: none;
+    border-radius: .2rem ;
+
+    cursor: pointer;
+}
+
+button:hover {
+    background: #3dd705;
+}
+
+.btn {
+    width: 100%;
+    height: 50px; 
+}
+.btn.cancel {
+    color: #e92929;
+
+    border: 2px red solid;
+    border-radius: 0.25rem;
+
+    height: 50px;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0.7;
+}
+
+.btn.cancel:hover {
+    opacity: 1;
+}
+
+.input-group.actions .btn,
+.input-group.actions button {
+    width: 48%;
 }
 /*Header ============== */
 
@@ -203,7 +250,47 @@ td.expense {
     padding: 2.4rem;
 
     position: relative;
+
+    width: 90%;
+    max-width: 500px;
+
 }
+
+/*Header ============== */
+
+#form {
+    max-width: 500px;
+
+}
+
+#form h2 {
+    margin-top: 0;
+}
+
+input {
+    border: none;
+    border-radius: 02.rem;
+
+    padding: 0.8rem;
+
+    width: 100%;
+}
+
+.input-group {
+    margin-top: 0.8rem;
+}
+
+.input-group small {
+    opacity: 0.4;
+}
+
+.input-group.actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
 
 footer {
     text-align: center;
