@@ -26,7 +26,8 @@ const transactions = [
         description: 'Internet',
         amount: 50000,
         date: '11/23/21'
-    },]
+    },
+]
 
 const Transaction = {
     incomes() {
@@ -41,48 +42,69 @@ const Transaction = {
 }
 
 const DOM = {
-    transactionsContainer: document.querySelector('data-table tbody'),
+    transactionsContainer: document.querySelector('#data-table tbody'),
 
-    addTransaction() {
+    addTransaction(transaction, index) {
         const tr = document.createElement('tr')
-        tr.innerHTML = DOM.innerHtmlTransaction()
+        tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
 
         DOM.transactionsContainer.appendChild(tr)
     },
-    innerHtmlTransaction(transaction) {
+
+    innerHTMLTransaction(transaction, index) {
         const CSSclass = transaction.amount > 0 ? "income" : "expense"
 
-        const amount = Util.formatCurrency(transaction.amount)
+        const amount = Utils.formatCurrency(transaction.amount)
 
         const html = `
-                        <td class="description">Project Completed</td>
-                        <td class="expense">- $3.800,00</td>
-                        <td class="date">06/01/2021</td>
-                        <td><img src="./assets/minus.svg" alt="Remove Transaction"></td>         
+        <td class="description">${transaction.description}</td>
+        <td class="${CSSclass}">${amount}</td>
+        <td class="date">${transaction.date}</td>
+        <td>
+            <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
+        </td>
         `
+
         return html
     },
 
+    updateBalance() {
+        document.getElementById('incomeDisplay').innerHTML = "Soma das entradas"
+        document.getElementById('expenseDisplay').innerHTML = "Soma das entradas"
+        document.getElementById('totalDisplay').innerHTML = "Soma das entradas"
 
-}
-
-const Utils = {
-    formatCurrency(value) {
-        const signal = Number(value) < 0 ? "-" : ""
-
-        value = String(value).replace(/\D/g,"")
-
-        value = Number(value) / 100
-
-        value = value.toLOcaleString("us", {
-            style: "currency",
-            currency: "en-US"
-        })
-
-        return signal + value
     }
 }
 
-DOM.addTransaction()
+const Utils = {
+    formatAmount(value){
+        value = Number(value.replace(/\,\./g, "")) * 100
+        
+        return value
+    },
 
-transactions.forEach(function (transaction) { })
+    formatDate(date) {
+        const splittedDate = date.split("-")
+        return `${splittedDate[2]}/${splittedDate[1]}/${splittedDate[0]}`
+    },
+
+    formatCurrency(value) {
+        const signal = Number(value) < 0 ? "-" : ""
+
+        value = String(value).replace(/\D/g, "")
+
+        value = Number(value) / 100
+
+        value = value.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        })
+
+       return signal + value
+    }
+}
+
+transactions.forEach(function(transaction){
+    DOM.addTransaction(transaction)
+})
+DOM.updateBalance()
