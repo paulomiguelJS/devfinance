@@ -12,13 +12,13 @@ const transactions = [
     {
         id: 1,
         description: 'Eletric',
-        amount: -50000,
+        amount: 7000000,
         date: '11/23/21'
     },
     {
         id: 2,
         description: 'Water',
-        amount: 50000,
+        amount: -80000,
         date: '11/23/21'
     },
     {
@@ -31,10 +31,23 @@ const transactions = [
 
 const Transaction = {
     incomes() {
-
+        let income = 0;
+        transactions.forEach(transaction => {
+            if( transaction.amount > 0 ) {
+                income += transaction.amount;
+            }
+        })
+        return income;
     },
+    
     expenses() {
-
+        let expense = 0;
+        transactions.forEach(transaction => {
+            if( transaction.amount < 0 ) {
+                expense += transaction.amount;
+            }
+        })
+        return expense;
     },
     total() {
 
@@ -69,11 +82,16 @@ const DOM = {
     },
 
     updateBalance() {
-        document.getElementById('incomeDisplay').innerHTML = "Soma das entradas"
-        document.getElementById('expenseDisplay').innerHTML = "Soma das entradas"
-        document.getElementById('totalDisplay').innerHTML = "Soma das entradas"
-
-    }
+        document
+            .getElementById('incomeDisplay')
+            .innerHTML = Utils.formatCurrency(Transaction.incomes())
+        document
+            .getElementById('expenseDisplay')
+            .innerHTML = Utils.formatCurrency(Transaction.expenses())
+        document
+            .getElementById('totalDisplay')
+            .innerHTML = Utils.formatCurrency(Transaction.total())
+    },
 }
 
 const Utils = {
@@ -89,15 +107,15 @@ const Utils = {
     },
 
     formatCurrency(value) {
-        const signal = Number(value) < 0 ? "-" : ""
+        const signal = Number(value) < 0 ? "- " : ""
 
         value = String(value).replace(/\D/g, "")
 
         value = Number(value) / 100
 
-        value = value.toLocaleString("pt-BR", {
+        value = value.toLocaleString("en-US", {
             style: "currency",
-            currency: "BRL"
+            currency: "USD"
         })
 
        return signal + value
