@@ -57,7 +57,7 @@ a:hover {
     color: #3dd705;
 }
 
-.btn.new {
+.btn-new {
     display: inline-block;
     margin-bottom: .8rem;
 }
@@ -303,7 +303,7 @@ footer {
 }
 
 /*Responsive ============== */
-@media (min-width: 800px) {
+@media (min-width: 835px) {
 
     html {
         font-size: 87.5%;

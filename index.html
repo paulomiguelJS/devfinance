@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,300;1,500&display=swap"
         rel="stylesheet">
+        
 </head>
 
 <body>
@@ -47,7 +48,7 @@
         </section>
         <section id="transaction">
             <h2 class="sr-only">Transaction</h2>
-            <a href="#" onclick="Modal.open()" class="btn new">+ New Transaction</a>
+            <a href="#" onclick="Modal.open()" class="btn-new">+ New Transaction</a>
             <table id="data-table">
                 <thead>
                     <tr>
@@ -58,25 +59,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td class="description">Project Completed</td>
-                        <td class="expense">- $3.800,00</td>
-                        <td class="date">06/01/2021</td>
-                        <td><img src="./assets/minus.svg" alt="Remove Transaction"></td>
-                    <tr>
-                        <td class="description">Internet</td>
-                        <td class="income">- $ 70,00</td>
-                        <td class="date">06/01/2021</td>
-                        <td><img src="./assets/minus.svg" alt="Remove Transaction"></td>
-
-                    </tr>
-                    <tr>
-                        <td class="description">Rent</td>
-                        <td class="expense">- $ 15.000,00</td>
-                        <td class="date">06/01/2021</td>
-                        <td><img src="./assets/minus.svg" alt="Remove Transaction"></td>
-
-                    </tr>
+                    
                 </tbody>
             </table>
         </section>
@@ -114,15 +97,8 @@
     <footer>
         <p>Dev Finance</p>
     </footer>
-    <script>
-     const Modal = {
-            open(){
-                document.querySelector('.modal-overlay').classList.add('active')
-            },
-            close(){
-                document.querySelector('.modal-overlay').classList.remove('active')
-            }
-        }
+    <script src="./script.js">
+   
     </script>
 </body>
 
