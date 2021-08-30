@@ -30,9 +30,15 @@ const transactions = [
 ]
 
 const Transaction = {
+    all: transactions,
+    add(transaction) {
+     Transaction.all.push(transaction)   
+
+     App.reload()
+   },
     incomes() {
         let income = 0;
-        transactions.forEach(transaction => {
+        Transaction.all.forEach(transaction => {
             if( transaction.amount > 0 ) {
                 income += transaction.amount;
             }
@@ -42,7 +48,7 @@ const Transaction = {
     
     expenses() {
         let expense = 0;
-        transactions.forEach(transaction => {
+        Transaction.all.forEach(transaction => {
             if( transaction.amount < 0 ) {
                 expense += transaction.amount;
             }
@@ -50,7 +56,7 @@ const Transaction = {
         return expense;
     },
     total() {
-
+        return Transaction.incomes() + Transaction.expenses();
     }
 }
 
@@ -92,11 +98,15 @@ const DOM = {
             .getElementById('totalDisplay')
             .innerHTML = Utils.formatCurrency(Transaction.total())
     },
+
+    clearTransctions() {
+        DOM.transactionsContainer.innerHTML = ""
+    }
 }
 
 const Utils = {
     formatAmount(value){
-        value = Number(value.replace(/\,\./g, "")) * 100
+        value = Number(value.replace(/\D/g, "")) * 100
         
         return value
     },
@@ -107,7 +117,7 @@ const Utils = {
     },
 
     formatCurrency(value) {
-        const signal = Number(value) < 0 ? "- " : ""
+        const signal = Number(value) < 0 ? "-" : ""
 
         value = String(value).replace(/\D/g, "")
 
@@ -122,7 +132,21 @@ const Utils = {
     }
 }
 
-transactions.forEach(function(transaction){
-    DOM.addTransaction(transaction)
-})
-DOM.updateBalance()
+const App = {
+    init() {
+   
+        Transaction.all.forEach(transaction => {
+            DOM.addTransaction(transaction)
+        })
+
+        DOM.updateBalance()
+      
+    },
+    reload() {
+        DOM.clearTransctions()
+        App.init()
+    },
+}
+
+App.init()
+
