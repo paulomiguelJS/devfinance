@@ -53,6 +53,7 @@ const DOM = {
     addTransaction(transaction, index) {
         const tr = document.createElement('tr')
         tr.innerHTML = DOM.innerHTMLTransaction(transaction, index)
+        tr.dataset.index = index
 
         DOM.transactionsContainer.appendChild(tr)
     },
@@ -183,10 +184,8 @@ const Form = {
 const App = {
     init() {
 
-        Transaction.all.forEach(transaction => {
-            DOM.addTransaction(transaction)
-        })
-
+        Transaction.all.forEach(DOM.addTransaction)
+        
         DOM.updateBalance()
 
     },
