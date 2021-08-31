@@ -7,11 +7,17 @@ const Modal = {
     }
 }
 
-const Transaction = {
-    all: [
+const Storage = {
+    get() {
+        return JSON.parse(localStorage.getItem("dev.finances:transactions")) || []
+    },
+    set(transactions) {
+        localStorage.setItem("dev.finances:transactions", JSON.stringify(transactions))
+    }
+}
 
-     
-    ],
+const Transaction = {
+    all: Storage.get(),
     add(transaction) {
         Transaction.all.push(transaction)
 
@@ -120,7 +126,6 @@ const Utils = {
     }
 }
 
-
 const Form = {
     description: document.querySelector('input#description'),
     amount: document.querySelector('input#amount'),
@@ -183,11 +188,11 @@ const Form = {
 
 const App = {
     init() {
-
         Transaction.all.forEach(DOM.addTransaction)
         
         DOM.updateBalance()
 
+        Storage.set(Transaction.all)
     },
     reload() {
         DOM.clearTransctions()
