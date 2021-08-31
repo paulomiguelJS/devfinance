@@ -220,6 +220,10 @@ td.expense {
     color: #e92929;
 }
 
+td img {
+    cursor: pointer;
+}
+
 /*Modal ============== */
 
 .modal-overlay {
@@ -261,6 +265,9 @@ td.expense {
 #form {
     max-width: 500px;
 
+   
+   
+
 }
 
 #form h2 {
@@ -300,6 +307,9 @@ footer {
     color: var(--dark-blue);
 
     opacity: 0.6;
+
+    position: absolute;
+    z-index: 1;
 }
 
 /*Responsive ============== */

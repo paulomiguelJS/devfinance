@@ -10,21 +10,7 @@ const Modal = {
 const Transaction = {
     all: [
 
-        {
-            description: 'Eletric',
-            amount: 7000000,
-            date: '11/23/21'
-        },
-        {
-            description: 'Water',
-            amount: -80000,
-            date: '11/23/21'
-        },
-        {
-            description: 'Internet',
-            amount: 50000,
-            date: '11/23/21'
-        },
+     
     ],
     add(transaction) {
         Transaction.all.push(transaction)
@@ -106,18 +92,9 @@ const DOM = {
 }
 
 const Utils = {
-    formatAmount(value) {
-        value = Number(value) * 100
-    },
-
-    formateDAte(date) {
-      const splittedDate = date.split("-")
-      return    `${splittedDate[2]}/${splittedDate[1]/${splittedDate[0]}`
-    },
-
-    formatAmount(value) {
-        value = Number(value.replace(/\D/g, "")) * 100
-
+    formatAmount(value){
+        value = Number(value.replace(/\,\./g, "")) * 100
+        
         return value
     },
 
@@ -133,33 +110,27 @@ const Utils = {
 
         value = Number(value) / 100
 
-        value = value.toLocaleString("en-US", {
+        value = value.toLocaleString("pt-BR", {
             style: "currency",
-            currency: "USD"
+            currency: "BRL"
         })
 
-        return signal + value
+       return signal + value
     }
 }
+
 
 const Form = {
     description: document.querySelector('input#description'),
     amount: document.querySelector('input#amount'),
     date: document.querySelector('input#date'),
 
-    getValues() {
+      getValues() {
         return {
             description: Form.description.value,
             amount: Form.amount.value,
             date: Form.date.value
         }
-    },
-
-    formatValues() {
-        let { description, amount, date } = Form.formatVAlues()
-
-        amount = Utils.formatAmount(amount)
-        DATE = Utils.formatDate(date)
     },
     validateFields() {
         const { description, amount, date } = Form.getValues()
@@ -169,19 +140,42 @@ const Form = {
         }
     },
 
+  
+    formatValues() {
+        let { description, amount, date } = Form.getValues()
+        
+        amount = Utils.formatAmount(amount)
+
+        date = Utils.formatDate(date)
+
+        return {
+            description,
+            amount,
+            date
+        }
+    },
+
+    clearFields() {
+        Form.description.value = ""
+        Form.amount.value = ""
+        Form.date.value = ""
+
+    },
+
     submit(event) {
         event.preventDefault()
 
         try {
-        Form.validateFields()
 
+            Form.validateFields()
+            const transaction = Form.formatValues()
+            Transaction.add(transaction)
+            Form.clearFields()
+            Modal.close()
 
         } catch (error) {
             alert(error.message)
         }
-
-
-        Form.formatData()
     }
 
 }
