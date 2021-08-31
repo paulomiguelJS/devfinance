@@ -107,6 +107,15 @@ const DOM = {
 
 const Utils = {
     formatAmount(value) {
+        value = Number(value) * 100
+    },
+
+    formateDAte(date) {
+      const splittedDate = date.split("-")
+      return    `${splittedDate[2]}/${splittedDate[1]/${splittedDate[0]}`
+    },
+
+    formatAmount(value) {
         value = Number(value.replace(/\D/g, "")) * 100
 
         return value
@@ -146,8 +155,11 @@ const Form = {
         }
     },
 
-    formatData() {
+    formatValues() {
+        let { description, amount, date } = Form.formatVAlues()
 
+        amount = Utils.formatAmount(amount)
+        DATE = Utils.formatDate(date)
     },
     validateFields() {
         const { description, amount, date } = Form.getValues()
