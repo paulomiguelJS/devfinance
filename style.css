@@ -241,6 +241,8 @@ td img {
 
     opacity: 0;
     visibility: hidden;
+
+    z-index: 999;
 }
 
 .modal-overlay.active {
@@ -303,13 +305,13 @@ footer {
     text-align: center;
 
     padding: 4rem 0 2rem;
+    margin-top: 8rem;
 
     color: var(--dark-blue);
 
     opacity: 0.6;
-
-    position: absolute;
-    z-index: 1;
+    
+    
 }
 
 /*Responsive ============== */
