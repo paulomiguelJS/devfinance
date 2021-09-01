@@ -116,6 +116,7 @@ header {
     background: #11698E;
 
     height: 35vh;
+
 }
 
 #logo {
@@ -126,6 +127,9 @@ header {
     font-weight: 100;
     letter-spacing: 1em;
     font-size: 2.5em;
+
+    text-align: center;
+
 }
 
 #balance {
