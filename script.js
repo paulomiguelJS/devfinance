@@ -117,9 +117,9 @@ const Utils = {
 
         value = Number(value) / 100
 
-        value = value.toLocaleString("en-US", {
+        value = value.toLocaleString("pt-BR", {
             style: "currency",
-            currency: "USD"
+            currency: "BRL"
         })
 
        return signal + value

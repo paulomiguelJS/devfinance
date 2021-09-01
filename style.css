@@ -111,14 +111,17 @@ button:hover {
 /*Header ============== */
 
 header {
+    display: flex;
+    justify-content: center;
     background: #11698E;
 
-    padding: 4rem 2rem 15rem 5rem;
-
-    text-align: center;
+    height: 35vh;
 }
 
 #logo {
+
+    padding-top: 5rem;
+
     color: #fff;
     font-weight: 100;
     letter-spacing: 1em;
@@ -126,7 +129,7 @@ header {
 }
 
 #balance {
-    margin-top: -5.4rem;
+    margin-top: -4.9rem;
 }
 
 #balance h2 {
@@ -159,6 +162,7 @@ header {
 
     margin-top: 1rem;
 }
+
 
 .card.total {
     background: #16C79A;
@@ -326,8 +330,14 @@ footer {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
     }
+
+   
+}
+
+@media (max-width: 500px) {
+    #logo {
+        font-size: 1.5rem;
+    }
 }
 
 
-
-/* NEGATIVE COLOR #FF6B6B*/
