@@ -339,9 +339,18 @@ footer {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
     }
- 
+
 }
 
+@media (max-width: 500px) {
+    header h1{
+        font-size: 2.5rem;
+    }
+
+    header span {
+        font-size: 3rem;
+    }
+}
 
 
 
