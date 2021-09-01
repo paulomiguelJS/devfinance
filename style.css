@@ -111,26 +111,29 @@ button:hover {
 /*Header ============== */
 
 header {
-    display: flex;
-    justify-content: center;
     background: #11698E;
 
     height: 35vh;
     
-    text-align: center;
+}
+
+header h1 {
+    padding-top: 3rem;
+
+    font-weight: 100;
+    font-size: 3.5rem;
+    color: #E8E6E6;
+    letter-spacing: .3rem;
+    
+    text-align:center;
 
 }
 
-#logo {
+header span {
+    color: #16C79A;
+    font-weight: 400;
+    font-size: 4.5rem;
 
-    padding-top: 5rem;
-
-    color: #fff;
-    font-weight: 100;
-    letter-spacing: 1em;
-    font-size: 2.5em;
-
-    text-align: center;
 
 }
 
@@ -336,14 +339,10 @@ footer {
         grid-template-columns: repeat(3, 1fr);
         gap: 2rem;
     }
-
-   
+ 
 }
 
-@media (max-width: 500px) {
-    #logo {
-        font-size: 1.5rem;
-    }
-}
+
+
 
 
