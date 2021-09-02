@@ -66,7 +66,7 @@ button {
     width: 100%;
     height: 50px;
 
-    background:#49AA26;
+    background:#11698E;
     color: #fff;
 
     padding: 0;
@@ -78,36 +78,71 @@ button {
 }
 
 button:hover {
-    background: #3dd705;
 }
 
 .btn {
     width: 100%;
     height: 50px; 
 }
-.btn.cancel {
-    color: #e92929;
 
-    border: 2px red solid;
-    border-radius: 0.25rem;
+
+
+.input-group.actions .btn,
+.btn-income, .btn-expense {
+    width: 48%;
+}
+
+.btn-income {
+    height: 50px;
+
+    background: none;
+    color: #16C79A;
+
+    padding: 0;
+    
+    border: 1px solid #16C79A;
+    border-radius: .2rem ;
+
+    cursor: pointer;
+}
+
+.btn-expense {
 
     height: 50px;
+
+    background:none;
+    color: #e76074;
+
+    padding: 0;
     
+    border: 1px solid #e76074;
+    border-radius: .2rem ;
+
+    cursor: pointer;
+}
+
+.btn-close {
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 2rem;
+    height: 2rem;
 
-    opacity: 0.7;
+    background: none;
+
+    color: #e76074;
+
+    font-size: 2rem;
+    font-weight: 500;
+
+    
 }
 
-.btn.cancel:hover {
-    opacity: 1;
+.btn-close:hover {
+    background: none;
 }
 
-.input-group.actions .btn,
-.input-group.actions button {
-    width: 48%;
-}
+
 /*Header ============== */
 
 header {
@@ -266,7 +301,7 @@ td img {
 .modal {
     background: #F0F2F5;
 
-    padding: 2.4rem;
+    padding: 3rem;
 
     position: relative;
 
@@ -277,15 +312,22 @@ td img {
 
 /*Header ============== */
 
-#form {
+.form {
     max-width: 500px;
+}
 
-   
-   
+.title-cancel {
+    display: flex;
+    justify-content: space-between;
 
 }
 
-#form h2 {
+.title-cancel a {
+    display: block;
+    border: 2px solid green;
+}
+
+.form h2 {
     margin-top: 0;
 }
 
