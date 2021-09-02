@@ -1,107 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DEV FINANCE</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,300;1,500&display=swap"
-        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,400;0,700;1,300;1,500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-</head>
-
-<body>
+  <body>
     <header>
-        <h1>DEV<span>$</span>FINANCE</h1>
+      <h1>DEV<span>$</span>FINANCE</h1>
     </header>
+
     <main class="container">
-        <section id="balance">
-            <h2 class="sr-only">Balance</h2>
-            <div class="card">
-                <h3>
-                    <span>Incomes</span>
-                    <img src="assets/income.svg" alt="income img">
-                </h3>
-                <p id="incomeDisplay"></p>
-            </div>
-            <div class="card">
-                <h3>
-                    <span>Expenses</span>
-                    <img src="assets/expense.svg" alt="expense img">
-                </h3>
-                <p id="expenseDisplay"></p>
-
-            </div>
-            <div class="card total">
-                <h3>
-                    <span>Total</span>
-                    <img src="assets/total.svg" alt="total img">
-                </h3>
-                <p id="totalDisplay"></p>
-            </div>
-        </section>
-        <section id="transaction">
-            <h2 class="sr-only">Transaction</h2>
-            <a href="#" onclick="Modal.open()" class="btn-new">+ New Transaction</a>
-            <table id="data-table">
-                <thead>
-                    <tr>
-                        <th>Description</th>
-                        <th>Amount</th>
-                        <th>Date</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-        </section>
-    </main>
-    <div class="modal-overlay ">
-        <div class="modal">
-            <div class="form">
-                <div class="title-cancel">
-                    <h2>New Transaction</h2>
-                    <button class="btn-close" onclick="Modal.close()" >X</button>
-                </div>
-                <form action="" onsubmit="Form.submit(event)">
-                    <div class="input-group">
-                        <label class="sr-only" for="description">Description</label>
-                        <input type="text" id="description" name="description" placeholder="Description">
-                    </div>
-                    <div class="input-group">
-                        <label class="sr-only" for="amount">Amount</label>
-                        <input type="number" step="0.01" id="amount" max="999999999" name="amount" placeholder="0.00">
-                    </div>
-
-
-                    <div class="input-group">
-                        <label class="sr-only" for="date">date</label>
-                        <input type="date" id="date" name="date">
-                    </div>
-                    <div class="input-group actions">
-                        <button  href="#" class="btn income">Income</button>
-                        <button  href="#" class="btn expense">Expense</button>
-                    </div>
-
-                    <div class="input-group actions">
-                        <button>Save</button>
-                    </div>
-
-                </form>
-            </div>
+      <section id="balance">
+        <h2 class="sr-only">Balance</h2>
+        <div class="card">
+          <h3>
+            <span>Incomes</span>
+            <img src="assets/income.svg" alt="income img" />
+          </h3>
+          <p id="incomeDisplay"></p>
         </div>
+        <div class="card">
+          <h3>
+            <span>Expenses</span>
+            <img src="assets/expense.svg" alt="expense img" />
+          </h3>
+          <p id="expenseDisplay"></p>
+        </div>
+        <div class="card total">
+          <h3>
+            <span>Total</span>
+            <img src="assets/total.svg" alt="total img" />
+          </h3>
+          <p id="totalDisplay"></p>
+        </div>
+      </section>
+      <section id="transaction">
+        <h2 class="sr-only">Transaction</h2>
+        <a href="#" onclick="Modal.open()" class="btn-new">+ New Transaction</a>
+        <table id="data-table">
+          <thead>
+            <tr>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Date</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </main>
+    <div class="modal-overlay">
+      <div class="modal">
+        <div class="form">
+          <div class="title-cancel">
+            <h2>New Transaction</h2>
+            <button class="btn-close" onclick="Modal.close()"><img src="assets/cancel.svg" alt=""></button>
+          </div>
+          <form action="" onsubmit="Form.submit(event)">
+            <div class="input-group">
+              <label class="sr-only" for="description">Description</label>
+              <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Description"
+              />
+            </div>
+            <div class="input-group">
+              <label class="sr-only" for="amount">Amount</label>
+              <input
+                type="number"
+                step="0.01"
+                id="amount"
+                max="999999999"
+                name="amount"
+                placeholder="0.00"
+              />
+            </div>
+            <div class="input-group">
+              <label class="sr-only" for="date">date</label>
+              <input type="date" 
+              id="date" 
+              name="date" />
+            </div>
+            <div class="input-group actions">
+              <button href="#" class="btn income">Income</button>
+              <button href="#" class="btn expense">Expense</button>
+            </div>
+            <div class="input-group actions">
+              <button class="btn-save">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
     <footer>
-        <p>Dev Finance</p>
+      <p>Dev Finance</p>
     </footer>
-    <script src="./script.js">
-
-    </script>
-</body>
-
+    <script src="./script.js"></script>
+  </body>
 </html>
