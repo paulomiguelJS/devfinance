@@ -48,6 +48,8 @@ const Transaction = {
         })
         return expense;
     },
+
+
     total() {
         return Transaction.incomes() + Transaction.expenses();
     }
@@ -76,6 +78,10 @@ const DOM = {
         <td>
             <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
         </td>
+        <div class="input-group actions">
+              <button href="#" class="btn income">${transaciton.income}</button>
+              <button href="#" class="btn expense">${transaction.expense}</button>
+            </div>
         `
 
         return html
