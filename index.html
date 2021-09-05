@@ -94,9 +94,9 @@
               id="date" 
               name="date" />
             </div>
-            <div class="input-group actions">
-              <button href="#" class="btn income">Income</button>
-              <button href="#" class="btn expense">Expense</button>
+            <div class="input-group actions transactionType">
+              <button onclick="Transaction.incomes" href="#" class="btn income"  data-button = "income" id="income">Income</button>
+              <button onclick="Transaction.expenses" href="#" class="btn expense" data-button = "expense" id="expense">Expense</button>
             </div>
             <div class="input-group actions">
               <button class="btn-save">Save</button>
