@@ -1,9 +1,11 @@
 const Modal = {
   open() {
     document.querySelector(".modal-overlay").classList.add("active");
+    Form.clearFields()
   },
   close() {
     document.querySelector(".modal-overlay").classList.remove("active");
+    Form.clearFields()
   },
 };
 
@@ -66,36 +68,22 @@ const DOM = {
     tr.dataset.index = index;
 
     DOM.transactionsContainer.appendChild(tr);
-    //this.btnTransaction()
-    console.log(DOM.btnTransaction());
-  },
-
-  btnTransaction() {
-    let selectedType = "";
-    const transactionTypeBtn = document.querySelectorAll(
-      ".transactionType button"
-    );
-    transactionTypeBtn.forEach((transactionBtn) => {
-      transactionBtn.addEventListener("click", (e) => {
-        selectedType = e.target.dataset.button;
-      });
-    });
-    return selectedType
   },
 
   innerHTMLTransaction(transaction, index) {
-    const CSSclass = transaction.amount > 0 ? "income" : "expense";
+    const type = transaction.type;
 
     const amount = Utils.formatCurrency(transaction.amount);
-
+    console.log(amount);
     const html = `
         <td class="description">${transaction.description}</td>
-        <td class="${CSSclass}">${amount}</td>
+        <td class="${type}">${type === "income" ? type : "-" + type}</td>
         <td class="date">${transaction.date}</td>
         <td>
             <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
         </td>
         `;
+        
 
     return html;
   },
@@ -140,7 +128,6 @@ const Utils = {
       style: "currency",
       currency: "USD",
     });
-
     return signal + value;
   },
 };
@@ -149,28 +136,57 @@ const Form = {
   description: document.querySelector("input#description"),
   amount: document.querySelector("input#amount"),
   date: document.querySelector("input#date"),
+  selectedType: "",
+  transactionTypeBtn: document.querySelectorAll(".transactionType button"),
+
+  btnTransaction(index) {
+    Form.transactionTypeBtn.forEach((btnTransaction) =>
+      btnTransaction.classList.remove("active")
+    );
+    if (Form.selectedType.trim === "") {
+        Form.removeBtnClassLIst()
+    }
+    Form.transactionTypeBtn[index].classList.add("active");
+  },
+
+  removeBtnClassLIst() {
+    Form.transactionTypeBtn.forEach((btnTransaction) =>
+      btnTransaction.classList.remove("active")
+    );
+  },
+
+  handleChangedType() {
+    Form.transactionTypeBtn.forEach((btnTransaction, index) =>
+      btnTransaction.addEventListener("click", (e) => {
+        Form.btnTransaction(index);
+        Form.selectedType = e.target.dataset.button;
+      })
+    );
+  },
 
   getValues() {
     return {
       description: Form.description.value,
       amount: Form.amount.value,
       date: Form.date.value,
+      type: Form.selectedType,
     };
   },
-  validateFields() {
-    const { description, amount, date } = Form.getValues();
 
+  validateFields() {
+    const { description, amount, date, type } = Form.getValues();
     if (
       description.trim() === "" ||
       amount.trim() === "" ||
-      date.trim() === ""
+      date.trim() === "" ||
+      type.trim() === ""
     ) {
       throw new Error("Please, fill out all the required fields");
     }
   },
 
   formatValues() {
-    let { description, amount, date } = Form.getValues();
+    let { description, amount, date, type } = Form.getValues();
 
     amount = Utils.formatAmount(amount);
 
@@ -180,6 +196,7 @@ const Form = {
       description,
       amount,
       date,
+      type,
     };
   },
 
@@ -187,6 +204,7 @@ const Form = {
     Form.description.value = "";
     Form.amount.value = "";
     Form.date.value = "";
+    Form.removeBtnClassLIst();
   },
 
   submit(event) {
@@ -196,8 +214,8 @@ const Form = {
       Form.validateFields();
       const transaction = Form.formatValues();
       Transaction.add(transaction);
-      Form.clearFields();
       Modal.close();
+      Form.clearFields();
     } catch (error) {
       alert(error.message);
     }
@@ -211,6 +229,8 @@ const App = {
     DOM.updateBalance();
 
     Storage.set(Transaction.all);
+
+    Form.handleChangedType();
   },
   reload() {
     DOM.clearTransctions();
