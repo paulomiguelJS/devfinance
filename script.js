@@ -37,7 +37,7 @@ const Transaction = {
   incomes() {
     let income = 0;
     Transaction.all.forEach((transaction) => {
-      if (transaction.amount > 0 && transaction.amount == "") {
+      if (transaction.amount > 0 ) {
         income += transaction.amount;
       }
     });
@@ -47,7 +47,7 @@ const Transaction = {
   expenses() {
     let expense = 0;
     Transaction.all.forEach((transaction) => {
-      if (transaction.amount < 0 && transaction.amount == "") {
+      if (transaction.amount < 0 ) {
         expense += transaction.amount;
       }
     });
@@ -77,7 +77,7 @@ const DOM = {
     console.log(amount);
     const html = `
         <td class="description">${transaction.description}</td>
-        <td class="${type}">${type === "income" ? type : "-" + type}</td>
+        <td class="${type}">${type === "income" ? amount : "-" + amount}</td>
         <td class="date">${transaction.date}</td>
         <td>
             <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
