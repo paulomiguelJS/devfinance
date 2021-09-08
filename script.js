@@ -36,31 +36,26 @@ const Transaction = {
 
   incomes() {
     let income = 0;
-    Transaction.all.forEach((transaction) => {
-      if (transaction.amount > 0 ) {
-        income += transaction.amount;
-      }
-    });
+    Transaction.all.forEach(transaction => {
+        if (transaction.amount > 0) {
+            income += transaction.amount;
+        }
+    })
     return income;
-  },
+},
 
-  expenses() {
+expenses() {
     let expense = 0;
-    Transaction.all.forEach((transaction) => {
-<<<<<<< HEAD
-      if (transaction.amount < 0 ) {
-=======
-      if (transaction.amount < 0) {
->>>>>>> Total working / Income and Expense aren't
-        expense += transaction.amount;
-      }
-    });
+    Transaction.all.forEach(transaction => {
+        if (transaction.amount < 0) {
+            expense += transaction.amount;
+        }
+    })
     return expense;
-  },
-
-  total() {
+},
+total() {
     return Transaction.incomes() + Transaction.expenses();
-  },
+},
 };
 
 const DOM = {
@@ -75,13 +70,10 @@ const DOM = {
   },
 
   innerHTMLTransaction(transaction, index) {
-    const type = transaction.type;
+    const type = transaction.type
 
     const amount = Utils.formatCurrency(transaction.amount);
-<<<<<<< HEAD
     console.log(amount);
-=======
->>>>>>> Total working / Income and Expense aren't
     const html = `
         <td class="description">${transaction.description}</td>
         <td class="${type}">${type === "income" ? amount : "-" + amount}</td>
@@ -96,49 +88,29 @@ const DOM = {
   },
 
   updateBalance() {
-<<<<<<< HEAD
-    document.getElementById("incomeDisplay").innerHTML = Utils.formatCurrency(
-      Transaction.incomes()
-    );
-    document.getElementById("expenseDisplay").innerHTML = Utils.formatCurrency(
-      Transaction.expenses()
-    );
-=======
-    document.getElementById("incomeDisplay").innerHTML =console.log(Utils.formatCurrency(
-      Transaction.incomes()
-    ));
- document.getElementById("expenseDisplay").innerHTML =    console.log(Utils.formatCurrency(
-      Transaction.expenses()
-    ));
->>>>>>> Total working / Income and Expense aren't
-    document.getElementById("totalDisplay").innerHTML = Utils.formatCurrency(
-      Transaction.total()
-    );
-  },
+    document
+        .getElementById('incomeDisplay')
+        .innerHTML = Utils.formatCurrency(Transaction.incomes())
+    document
+        .getElementById('expenseDisplay')
+        .innerHTML = Utils.formatCurrency(Transaction.expenses())
+    document
+        .getElementById('totalDisplay')
+        .innerHTML = Utils.formatCurrency(Transaction.total())
+},
 
-<<<<<<< HEAD
-  clearTransctions() {
-=======
+
   clearTransactions() {
->>>>>>> Total working / Income and Expense aren't
     DOM.transactionsContainer.innerHTML = "";
   },
 };
 
 const Utils = {
-<<<<<<< HEAD
   formatAmount(value) {
     value = Number(value.replace(/\.\,/g, "")) * 100;
 
     return value;
   },
-=======
-  formatAmount(value){
-        value = Number(value.replace(/\,\./g, "")) * 100
-        
-        return value
-    },
->>>>>>> Total working / Income and Expense aren't
 
   formatDate(date) {
     const splittedDate = date.split("-");
@@ -261,17 +233,9 @@ const App = {
     Form.handleChangedType();
   },
   reload() {
-<<<<<<< HEAD
-    DOM.clearTransctions();
-=======
     DOM.clearTransactions();
->>>>>>> Total working / Income and Expense aren't
     App.init();
   },
 };
 
-<<<<<<< HEAD
 App.init();
-=======
-App.init();
->>>>>>> Total working / Income and Expense aren't
