@@ -88,12 +88,12 @@ const DOM = {
   },
 
   updateBalance() {
-    document
+    console.log(document
         .getElementById('incomeDisplay')
-        .innerHTML = Utils.formatCurrency(Transaction.incomes())
-    document
+        .innerHTML = Utils.formatCurrency(Transaction.incomes()))
+   console.log( document
         .getElementById('expenseDisplay')
-        .innerHTML = Utils.formatCurrency(Transaction.expenses())
+        .innerHTML = Utils.formatCurrency(Transaction.expenses()))
     document
         .getElementById('totalDisplay')
         .innerHTML = Utils.formatCurrency(Transaction.total())
