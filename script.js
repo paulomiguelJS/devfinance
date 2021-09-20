@@ -36,8 +36,8 @@ const Transaction = {
 
   incomes() {
     let income = 0;
-    Transaction.all.forEach(transaction => {
-        if (transaction.amount > 0) {
+    Transaction.all.forEach(transaction => { 
+        if (transaction.type === 'income') {
             income += transaction.amount;
         }
     })
@@ -47,7 +47,7 @@ const Transaction = {
 expenses() {
     let expense = 0;
     Transaction.all.forEach(transaction => {
-        if (transaction.amount < 0) {
+       if (transaction.type === 'expense') { //Your amount is never negative, What determines if the amount it's an expense is transaction.type
             expense += transaction.amount;
         }
     })
