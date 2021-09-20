@@ -34,11 +34,10 @@ const Transaction = {
     App.reload();
   },
 
-  
   incomes() {
     let income = 0;
     Transaction.all.forEach(transaction => {
-        if( transaction.amount > 0 ) {
+        if (transaction.amount > 0) {
             income += transaction.amount;
         }
     })
@@ -48,17 +47,16 @@ const Transaction = {
 expenses() {
     let expense = 0;
     Transaction.all.forEach(transaction => {
-        if( transaction.amount < 0 ) {
+        if (transaction.amount < 0) {
             expense += transaction.amount;
         }
     })
     return expense;
 },
-
 total() {
     return Transaction.incomes() + Transaction.expenses();
-}
-}
+},
+};
 
 const DOM = {
   transactionsContainer: document.querySelector("#data-table tbody"),
@@ -72,9 +70,10 @@ const DOM = {
   },
 
   innerHTMLTransaction(transaction, index) {
-    const type = transaction.type 
-    
+    const type = transaction.type
+
     const amount = Utils.formatCurrency(transaction.amount);
+    console.log(amount);
     const html = `
         <td class="description">${transaction.description}</td>
         <td class="${type}">${type === "income" ? amount : "-" + amount}</td>
@@ -87,7 +86,6 @@ const DOM = {
 
     return html;
   },
-
   updateBalance() {
     document
         .getElementById('incomeDisplay')
@@ -99,7 +97,6 @@ const DOM = {
         .getElementById('totalDisplay')
         .innerHTML = Utils.formatCurrency(Transaction.total())
 },
-
 
   clearTransactions() {
     DOM.transactionsContainer.innerHTML = "";
