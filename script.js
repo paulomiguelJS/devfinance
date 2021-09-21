@@ -36,7 +36,7 @@ const Transaction = {
 
   incomes() {
     let income = 0;
-    Transaction.all.forEach(transaction => { //Your amount is never negative, What determines if the amount it's an expense is transaction.type
+    Transaction.all.forEach(transaction => { 
         if (transaction.type === 'income') {
             income += transaction.amount;
         }
@@ -54,9 +54,24 @@ expenses() {
     return expense;
 },
 total() {
-    return Transaction.incomes() - Transaction.expenses();
+    let totalTransaction = Transaction.incomes() - Transaction.expenses();
+  if(totalTransaction < 0) {
+    let totalCard = document.querySelector(".total")
+    totalCard.classList.add("negativeTotal")
+   
+  return totalTransaction
+  } else {
+    let totalCard = document.querySelector(".total")
+
+    totalCard.classList.remove("negativeTotal")
+    return totalTransaction
+  }
+    
 },
 };
+
+
+
 
 const DOM = {
   transactionsContainer: document.querySelector("#data-table tbody"),
@@ -73,7 +88,6 @@ const DOM = {
     const type = transaction.type
 
     const amount = Utils.formatCurrency(transaction.amount);
-    console.log(amount);
     const html = `
         <td class="description">${transaction.description}</td>
         <td class="${type}">${type === "income" ? amount : "-" + amount}</td>
@@ -82,8 +96,6 @@ const DOM = {
             <img onclick="Transaction.remove(${index})" src="./assets/minus.svg" alt="Remover transação">
         </td>
         `;
-        
-
     return html;
   },
   updateBalance() {

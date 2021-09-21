@@ -204,6 +204,8 @@ header span {
   margin-bottom: 2rem;
 
   border-radius: 0.25rem;
+
+
 }
 
 .card h3 {
@@ -225,8 +227,12 @@ header span {
 .card.total {
   background: #16c79a;
   color: snow;
+  
 }
 
+.card.total.negativeTotal {
+  background: #e75d5d;
+}
 #transaction {
   display: block;
   width: 100%;
@@ -304,6 +310,8 @@ td img {
   visibility: hidden;
 
   z-index: 999;
+
+  transition: .5s ease;
 }
 
 .modal-overlay.active {
@@ -366,15 +374,46 @@ input {
 }
 
 footer {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-  padding: 4rem 0 2rem;
-  margin-top: 8rem;
+  position: fixed;
+  height: 100px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 
   color: var(--dark-blue);
 
   opacity: 0.6;
 }
+
+
+
+footer h1 {
+
+  font-weight: 100;
+  font-size: 1.5rem;
+  letter-spacing: 0.3rem;
+
+  text-align: center;
+}
+
+footer span {
+  color: #16c79a;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+
+.newTransaction{
+  cursor: pointer;
+
+  margin-left: 1rem;
+}
+
+
 
 /*Responsive ============== */
 @media (min-width: 835px) {
