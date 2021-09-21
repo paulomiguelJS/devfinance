@@ -1,11 +1,11 @@
 const Modal = {
   open() {
     document.querySelector(".modal-overlay").classList.add("active");
-    Form.clearFields()
+    Form.clearFields();
   },
   close() {
     document.querySelector(".modal-overlay").classList.remove("active");
-    Form.clearFields()
+    Form.clearFields();
   },
 };
 
@@ -36,42 +36,38 @@ const Transaction = {
 
   incomes() {
     let income = 0;
-    Transaction.all.forEach(transaction => { 
-        if (transaction.type === 'income') {
-            income += transaction.amount;
-        }
-    })
+    Transaction.all.forEach((transaction) => {
+      if (transaction.type === "income") {
+        income += transaction.amount;
+      }
+    });
     return income;
-},
+  },
 
-expenses() {
+  expenses() {
     let expense = 0;
-    Transaction.all.forEach(transaction => {
-        if (transaction.type === 'expense') {
-            expense += transaction.amount;
-        }
-    })
+    Transaction.all.forEach((transaction) => {
+      if (transaction.type === "expense") {
+        expense += transaction.amount;
+      }
+    });
     return expense;
-},
-total() {
+  },
+  total() {
     let totalTransaction = Transaction.incomes() - Transaction.expenses();
-  if(totalTransaction < 0) {
-    let totalCard = document.querySelector(".total")
-    totalCard.classList.add("negativeTotal")
-   
-  return totalTransaction
-  } else {
-    let totalCard = document.querySelector(".total")
+    if (totalTransaction < 0) {
+      let totalCard = document.querySelector(".total");
+      totalCard.classList.add("negativeTotal");
 
-    totalCard.classList.remove("negativeTotal")
-    return totalTransaction
-  }
-    
-},
+      return totalTransaction;
+    } else {
+      let totalCard = document.querySelector(".total");
+      totalCard.classList.remove("negativeTotal");
+      
+      return totalTransaction;
+    }
+  },
 };
-
-
-
 
 const DOM = {
   transactionsContainer: document.querySelector("#data-table tbody"),
@@ -85,7 +81,7 @@ const DOM = {
   },
 
   innerHTMLTransaction(transaction, index) {
-    const type = transaction.type
+    const type = transaction.type;
 
     const amount = Utils.formatCurrency(transaction.amount);
     const html = `
@@ -99,16 +95,16 @@ const DOM = {
     return html;
   },
   updateBalance() {
-    document
-        .getElementById('incomeDisplay')
-        .innerHTML = Utils.formatCurrency(Transaction.incomes())
-    document
-        .getElementById('expenseDisplay')
-        .innerHTML = Utils.formatCurrency(Transaction.expenses())
-    document
-        .getElementById('totalDisplay')
-        .innerHTML = Utils.formatCurrency(Transaction.total())
-},
+    document.getElementById("incomeDisplay").innerHTML = Utils.formatCurrency(
+      Transaction.incomes()
+    );
+    document.getElementById("expenseDisplay").innerHTML = Utils.formatCurrency(
+      Transaction.expenses()
+    );
+    document.getElementById("totalDisplay").innerHTML = Utils.formatCurrency(
+      Transaction.total()
+    );
+  },
 
   clearTransactions() {
     DOM.transactionsContainer.innerHTML = "";
@@ -154,7 +150,7 @@ const Form = {
       btnTransaction.classList.remove("active")
     );
     if (Form.selectedType.trim === "") {
-        Form.removeBtnClassLIst()
+      Form.removeBtnClassLIst();
     }
     Form.transactionTypeBtn[index].classList.add("active");
   },
