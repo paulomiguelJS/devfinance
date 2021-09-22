@@ -151,8 +151,12 @@ a:hover {
   align-items: center;
   justify-content: center;
 
-  border: none;
+  border: 1px solid #e76074;
+  border-radius: .2rem;
 
+  font-size: 2rem;
+  color: #e76074;
+  
   width: 30px;
   height: 30px;
 
