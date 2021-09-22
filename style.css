@@ -156,7 +156,7 @@ a:hover {
 
   font-size: 2rem;
   color: #e76074;
-  
+
   width: 30px;
   height: 30px;
 
@@ -349,11 +349,6 @@ td img {
 .title-cancel {
   display: flex;
   justify-content: space-between;
-}
-
-.title-cancel a {
-  display: block;
-  border: 2px solid green;
 }
 
 .form h2 {
