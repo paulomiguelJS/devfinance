@@ -59,8 +59,14 @@ a:hover {
 }
 
 .btn-new {
-  display: inline-block;
-  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+
+  margin-bottom: 1rem;
+}
+
+.btn-new span {
+  margin-left: 1rem;
 }
 
 .btn-save {
@@ -379,12 +385,13 @@ footer {
   justify-content: space-between;
 
   padding-top: 10rem;
+  padding-bottom: 3rem;
   color: var(--dark-blue);
 
   opacity: 0.6;
 }
 
-footer h1 {
+footer h6 {
   font-weight: 100;
   font-size: 1.5rem;
   letter-spacing: 0.3rem;
@@ -400,8 +407,6 @@ footer span {
 
 .newTransaction{
   cursor: pointer;
-
-  margin-left: 1rem;
 }
 
 /*Responsive ============== */
@@ -425,4 +430,19 @@ footer span {
   header span {
     font-size: 3rem;
   }
+
+  footer p{
+  font-size: .8rem;
+  }
+  
+
+  footer h1 {
+    font-size: 1.5rem;
+  
+  }
+  
+  footer span {
+    font-size: 2rem;
+  }
+  
 }
