@@ -1,5 +1,5 @@
 <div align='center'>
-<img src='./Readme/logo_readme.png'>
+<img src='./readme/dev-a.png'>
 
 <div>
     <img src="https://img.shields.io/github/repo-size/paulomigueljs/devfinance">
@@ -12,11 +12,12 @@
 
 </br>
 
+<h1>Dev Finance</h1>
+
 <h2>🔖 Description</h2>
 
 <p>Dev Finance is an application for personal or family financial control purposes.</p>
 
-<p>Dev Finance</p>
 
 </br>
 
